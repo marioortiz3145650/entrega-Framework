@@ -16,7 +16,7 @@ CREATE TABLE usuarios (
     password_hash VARCHAR(255) NOT NULL,
     rol_id INT NOT NULL,
     fecha_registro DATE DEFAULT CURRENT_DATE,
-    activo BOOLEAN DEFAULT TRUE,
+    estado BOOLEAN DEFAULT TRUE,
     FOREIGN KEY (rol_id) REFERENCES roles(id_rol)
 );
 

@@ -1,0 +1,42 @@
+version: '3.8'
+
+services:
+  db-laying-hens:
+    image: postgres:16
+    container_name: db_laying_hens
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: laying_hens
+      POSTGRES_USER: sena2025
+      POSTGRES_PASSWORD: 123456789
+      TZ: America/Bogota
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./postgres_data:/var/lib/postgresql/data
+      - ./init:/docker-entrypoint-initdb.d:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U sena2025 -d laying_hens"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+    networks:
+      - laying_hens_net
+
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: pgadmin_laying_hens
+    restart: unless-stopped
+    depends_on:
+      - db-laying-hens
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@layinghens.com
+      PGADMIN_DEFAULT_PASSWORD: admin123
+    ports:
+      - "8082:80"
+    networks:
+      - laying_hens_net
+
+networks:
+  laying_hens_net:
+    driver: bridge

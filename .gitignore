@@ -1,0 +1,10 @@
+### Datos de MySQL ###
+/mysql_data/
+!mysql_data/.gitignore  # Opcional: para mantener la carpeta vacía si es necesario
+
+### Configuración del IDE ###
+.idea/
+
+### Archivos del sistema ###
+.DS_Store
+Thumbs.db

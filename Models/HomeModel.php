@@ -1,6 +1,6 @@
 <?php
 
-    class HomeModel extends Mysql
+    class HomeModel extends Postgres
     {
         public function __construct()
         {

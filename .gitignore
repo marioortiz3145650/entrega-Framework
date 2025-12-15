@@ -2,6 +2,9 @@
 /mysql_data/
 !mysql_data/.gitignore  # Opcional: para mantener la carpeta vacía si es necesario
 
+### Datos de PostgreSQL ###
+/postgres_data/
+
 ### Configuración del IDE ###
 .idea/
 

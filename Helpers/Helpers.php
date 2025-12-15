@@ -106,3 +106,14 @@ function testBooleanString(string $value): bool
 {
     return in_array(strtolower($value), ['true', 'false'], true);
 }
+
+function testDate(string $date): bool
+{
+    $d = DateTime::createFromFormat('Y-m-d', $date);
+    return $d && $d->format('Y-m-d') === $date;
+}
+
+function testDecimal(string $value): bool
+{
+    return is_numeric($value) && floatval($value) >= 0;
+}
